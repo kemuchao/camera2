@@ -1,0 +1,598 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EE79DDE32321FD9F0000D945 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EE79DDE22321FD9F0000D945 /* AppDelegate.m */; };
+		EE79DDE62321FD9F0000D945 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE79DDE52321FD9F0000D945 /* ViewController.m */; };
+		EE79DDE92321FD9F0000D945 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE79DDE72321FD9F0000D945 /* Main.storyboard */; };
+		EE79DDEB2321FDA10000D945 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE79DDEA2321FDA10000D945 /* Assets.xcassets */; };
+		EE79DDEE2321FDA10000D945 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE79DDEC2321FDA10000D945 /* LaunchScreen.storyboard */; };
+		EE79DDF12321FDA10000D945 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EE79DDF02321FDA10000D945 /* main.m */; };
+		EE79DDFB2321FDA10000D945 /* __________Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = EE79DDFA2321FDA10000D945 /* __________Tests.m */; };
+		EE79DE062321FDA10000D945 /* __________UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = EE79DE052321FDA10000D945 /* __________UITests.m */; };
+		EE79DE182321FDD60000D945 /* CameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE79DE172321FDD60000D945 /* CameraController.m */; };
+		EE79DE1D2321FDE10000D945 /* NSFileManager+THAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = EE79DE1B2321FDE10000D945 /* NSFileManager+THAdditions.m */; };
+		EE79DE1E2321FDE10000D945 /* PreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = EE79DE1C2321FDE10000D945 /* PreviewView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EE79DDF72321FDA10000D945 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EE79DDD62321FD9F0000D945 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EE79DDDD2321FD9F0000D945;
+			remoteInfo = "视频捕捉-切换摄像头";
+		};
+		EE79DE022321FDA10000D945 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EE79DDD62321FD9F0000D945 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EE79DDDD2321FD9F0000D945;
+			remoteInfo = "视频捕捉-切换摄像头";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		EE79DDDE2321FD9F0000D945 /* 视频捕捉-切换摄像头.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "视频捕捉-切换摄像头.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE79DDE12321FD9F0000D945 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		EE79DDE22321FD9F0000D945 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		EE79DDE42321FD9F0000D945 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		EE79DDE52321FD9F0000D945 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		EE79DDE82321FD9F0000D945 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EE79DDEA2321FDA10000D945 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EE79DDED2321FDA10000D945 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EE79DDEF2321FDA10000D945 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EE79DDF02321FDA10000D945 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		EE79DDF62321FDA10000D945 /* 视频捕捉-切换摄像头Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "视频捕捉-切换摄像头Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE79DDFA2321FDA10000D945 /* __________Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "__________Tests.m"; sourceTree = "<group>"; };
+		EE79DDFC2321FDA10000D945 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EE79DE012321FDA10000D945 /* 视频捕捉-切换摄像头UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "视频捕捉-切换摄像头UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE79DE052321FDA10000D945 /* __________UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "__________UITests.m"; sourceTree = "<group>"; };
+		EE79DE072321FDA10000D945 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EE79DE162321FDD60000D945 /* CameraController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CameraController.h; sourceTree = "<group>"; };
+		EE79DE172321FDD60000D945 /* CameraController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CameraController.m; sourceTree = "<group>"; };
+		EE79DE192321FDE10000D945 /* NSFileManager+THAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+THAdditions.h"; sourceTree = "<group>"; };
+		EE79DE1A2321FDE10000D945 /* PreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreviewView.h; sourceTree = "<group>"; };
+		EE79DE1B2321FDE10000D945 /* NSFileManager+THAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+THAdditions.m"; sourceTree = "<group>"; };
+		EE79DE1C2321FDE10000D945 /* PreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreviewView.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EE79DDDB2321FD9F0000D945 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE79DDF32321FDA10000D945 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE79DDFE2321FDA10000D945 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EE79DDD52321FD9F0000D945 = {
+			isa = PBXGroup;
+			children = (
+				EE79DDE02321FD9F0000D945 /* 视频捕捉-切换摄像头 */,
+				EE79DDF92321FDA10000D945 /* 视频捕捉-切换摄像头Tests */,
+				EE79DE042321FDA10000D945 /* 视频捕捉-切换摄像头UITests */,
+				EE79DDDF2321FD9F0000D945 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EE79DDDF2321FD9F0000D945 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EE79DDDE2321FD9F0000D945 /* 视频捕捉-切换摄像头.app */,
+				EE79DDF62321FDA10000D945 /* 视频捕捉-切换摄像头Tests.xctest */,
+				EE79DE012321FDA10000D945 /* 视频捕捉-切换摄像头UITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EE79DDE02321FD9F0000D945 /* 视频捕捉-切换摄像头 */ = {
+			isa = PBXGroup;
+			children = (
+				EE79DDE12321FD9F0000D945 /* AppDelegate.h */,
+				EE79DDE22321FD9F0000D945 /* AppDelegate.m */,
+				EE79DDE42321FD9F0000D945 /* ViewController.h */,
+				EE79DDE52321FD9F0000D945 /* ViewController.m */,
+				EE79DDE72321FD9F0000D945 /* Main.storyboard */,
+				EE79DDEA2321FDA10000D945 /* Assets.xcassets */,
+				EE79DDEC2321FDA10000D945 /* LaunchScreen.storyboard */,
+				EE79DDEF2321FDA10000D945 /* Info.plist */,
+				EE79DDF02321FDA10000D945 /* main.m */,
+				EE79DE162321FDD60000D945 /* CameraController.h */,
+				EE79DE172321FDD60000D945 /* CameraController.m */,
+				EE79DE1A2321FDE10000D945 /* PreviewView.h */,
+				EE79DE1C2321FDE10000D945 /* PreviewView.m */,
+				EE79DE192321FDE10000D945 /* NSFileManager+THAdditions.h */,
+				EE79DE1B2321FDE10000D945 /* NSFileManager+THAdditions.m */,
+			);
+			path = "视频捕捉-切换摄像头";
+			sourceTree = "<group>";
+		};
+		EE79DDF92321FDA10000D945 /* 视频捕捉-切换摄像头Tests */ = {
+			isa = PBXGroup;
+			children = (
+				EE79DDFA2321FDA10000D945 /* __________Tests.m */,
+				EE79DDFC2321FDA10000D945 /* Info.plist */,
+			);
+			path = "视频捕捉-切换摄像头Tests";
+			sourceTree = "<group>";
+		};
+		EE79DE042321FDA10000D945 /* 视频捕捉-切换摄像头UITests */ = {
+			isa = PBXGroup;
+			children = (
+				EE79DE052321FDA10000D945 /* __________UITests.m */,
+				EE79DE072321FDA10000D945 /* Info.plist */,
+			);
+			path = "视频捕捉-切换摄像头UITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EE79DDDD2321FD9F0000D945 /* 视频捕捉-切换摄像头 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EE79DE0A2321FDA10000D945 /* Build configuration list for PBXNativeTarget "视频捕捉-切换摄像头" */;
+			buildPhases = (
+				EE79DDDA2321FD9F0000D945 /* Sources */,
+				EE79DDDB2321FD9F0000D945 /* Frameworks */,
+				EE79DDDC2321FD9F0000D945 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "视频捕捉-切换摄像头";
+			productName = "视频捕捉-切换摄像头";
+			productReference = EE79DDDE2321FD9F0000D945 /* 视频捕捉-切换摄像头.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EE79DDF52321FDA10000D945 /* 视频捕捉-切换摄像头Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EE79DE0D2321FDA10000D945 /* Build configuration list for PBXNativeTarget "视频捕捉-切换摄像头Tests" */;
+			buildPhases = (
+				EE79DDF22321FDA10000D945 /* Sources */,
+				EE79DDF32321FDA10000D945 /* Frameworks */,
+				EE79DDF42321FDA10000D945 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EE79DDF82321FDA10000D945 /* PBXTargetDependency */,
+			);
+			name = "视频捕捉-切换摄像头Tests";
+			productName = "视频捕捉-切换摄像头Tests";
+			productReference = EE79DDF62321FDA10000D945 /* 视频捕捉-切换摄像头Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		EE79DE002321FDA10000D945 /* 视频捕捉-切换摄像头UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EE79DE102321FDA10000D945 /* Build configuration list for PBXNativeTarget "视频捕捉-切换摄像头UITests" */;
+			buildPhases = (
+				EE79DDFD2321FDA10000D945 /* Sources */,
+				EE79DDFE2321FDA10000D945 /* Frameworks */,
+				EE79DDFF2321FDA10000D945 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EE79DE032321FDA10000D945 /* PBXTargetDependency */,
+			);
+			name = "视频捕捉-切换摄像头UITests";
+			productName = "视频捕捉-切换摄像头UITests";
+			productReference = EE79DE012321FDA10000D945 /* 视频捕捉-切换摄像头UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EE79DDD62321FD9F0000D945 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = "柯木超";
+				TargetAttributes = {
+					EE79DDDD2321FD9F0000D945 = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+					EE79DDF52321FDA10000D945 = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = EE79DDDD2321FD9F0000D945;
+					};
+					EE79DE002321FDA10000D945 = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = EE79DDDD2321FD9F0000D945;
+					};
+				};
+			};
+			buildConfigurationList = EE79DDD92321FD9F0000D945 /* Build configuration list for PBXProject "视频捕捉-切换摄像头" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EE79DDD52321FD9F0000D945;
+			productRefGroup = EE79DDDF2321FD9F0000D945 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EE79DDDD2321FD9F0000D945 /* 视频捕捉-切换摄像头 */,
+				EE79DDF52321FDA10000D945 /* 视频捕捉-切换摄像头Tests */,
+				EE79DE002321FDA10000D945 /* 视频捕捉-切换摄像头UITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EE79DDDC2321FD9F0000D945 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE79DDEE2321FDA10000D945 /* LaunchScreen.storyboard in Resources */,
+				EE79DDEB2321FDA10000D945 /* Assets.xcassets in Resources */,
+				EE79DDE92321FD9F0000D945 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE79DDF42321FDA10000D945 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE79DDFF2321FDA10000D945 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EE79DDDA2321FD9F0000D945 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE79DE1D2321FDE10000D945 /* NSFileManager+THAdditions.m in Sources */,
+				EE79DE1E2321FDE10000D945 /* PreviewView.m in Sources */,
+				EE79DDE62321FD9F0000D945 /* ViewController.m in Sources */,
+				EE79DDF12321FDA10000D945 /* main.m in Sources */,
+				EE79DE182321FDD60000D945 /* CameraController.m in Sources */,
+				EE79DDE32321FD9F0000D945 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE79DDF22321FDA10000D945 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE79DDFB2321FDA10000D945 /* __________Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE79DDFD2321FDA10000D945 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE79DE062321FDA10000D945 /* __________UITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EE79DDF82321FDA10000D945 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EE79DDDD2321FD9F0000D945 /* 视频捕捉-切换摄像头 */;
+			targetProxy = EE79DDF72321FDA10000D945 /* PBXContainerItemProxy */;
+		};
+		EE79DE032321FDA10000D945 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EE79DDDD2321FD9F0000D945 /* 视频捕捉-切换摄像头 */;
+			targetProxy = EE79DE022321FDA10000D945 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EE79DDE72321FD9F0000D945 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EE79DDE82321FD9F0000D945 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		EE79DDEC2321FDA10000D945 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EE79DDED2321FDA10000D945 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EE79DE082321FDA10000D945 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		EE79DE092321FDA10000D945 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EE79DE0B2321FDA10000D945 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TT86V896FE;
+				INFOPLIST_FILE = "视频捕捉-切换摄像头/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ee.liuyi1224--";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EE79DE0C2321FDA10000D945 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TT86V896FE;
+				INFOPLIST_FILE = "视频捕捉-切换摄像头/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ee.liuyi1224--";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		EE79DE0E2321FDA10000D945 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "视频捕捉-切换摄像头Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "-11.----------Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/视频捕捉-切换摄像头.app/视频捕捉-切换摄像头";
+			};
+			name = Debug;
+		};
+		EE79DE0F2321FDA10000D945 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "视频捕捉-切换摄像头Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "-11.----------Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/视频捕捉-切换摄像头.app/视频捕捉-切换摄像头";
+			};
+			name = Release;
+		};
+		EE79DE112321FDA10000D945 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "视频捕捉-切换摄像头UITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "-11.----------UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "视频捕捉-切换摄像头";
+			};
+			name = Debug;
+		};
+		EE79DE122321FDA10000D945 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "视频捕捉-切换摄像头UITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "-11.----------UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "视频捕捉-切换摄像头";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EE79DDD92321FD9F0000D945 /* Build configuration list for PBXProject "视频捕捉-切换摄像头" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE79DE082321FDA10000D945 /* Debug */,
+				EE79DE092321FDA10000D945 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EE79DE0A2321FDA10000D945 /* Build configuration list for PBXNativeTarget "视频捕捉-切换摄像头" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE79DE0B2321FDA10000D945 /* Debug */,
+				EE79DE0C2321FDA10000D945 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EE79DE0D2321FDA10000D945 /* Build configuration list for PBXNativeTarget "视频捕捉-切换摄像头Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE79DE0E2321FDA10000D945 /* Debug */,
+				EE79DE0F2321FDA10000D945 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EE79DE102321FDA10000D945 /* Build configuration list for PBXNativeTarget "视频捕捉-切换摄像头UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE79DE112321FDA10000D945 /* Debug */,
+				EE79DE122321FDA10000D945 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EE79DDD62321FD9F0000D945 /* Project object */;
+}
