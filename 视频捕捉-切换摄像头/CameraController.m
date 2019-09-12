@@ -40,6 +40,25 @@
     //设置图像的分辨率
     self.captureSession.sessionPreset = AVCaptureSessionPresetHigh;
     
+    // 音频输入
+    //选择默认音频捕捉设备 即返回一个内置麦克风
+    AVCaptureDevice *audioDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeAudio];
+    
+    //为这个设备创建一个捕捉设备输入
+    AVCaptureDeviceInput *audioInput = [AVCaptureDeviceInput deviceInputWithDevice:audioDevice error:nil];
+    
+    //判断audioInput是否有效
+    if (audioInput) {
+        
+        //canAddInput：测试是否能被添加到会话中
+        if ([self.captureSession canAddInput:audioInput])
+        {
+            //将audioInput 添加到 captureSession中
+            [self.captureSession addInput:audioInput];
+        }
+    }
+    
+    // 视频输入
     // 1、添加device 拿到默认视频捕捉设备 iOS系统返回后置摄像头
     AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
     
@@ -256,9 +275,7 @@ didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL
                 UIImageOrientation imgOrientation = UIImageOrientationRight;
                 image = [[UIImage alloc]initWithCGImage:cgImage scale:1.0f orientation:imgOrientation];
             }
-            //重新画一张图片(将时间/个人信息/地址信息画上去)
-//            self.image = [self drawMarkImage:image];
-            
+
             UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
         } else {
             NSLog(@"不是走这个代理方法");
