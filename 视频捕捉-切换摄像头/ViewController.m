@@ -31,12 +31,19 @@
     [self.view addSubview:button];
     [button addTarget:self action:@selector(stopAction:) forControlEvents:UIControlEventTouchUpInside];
     
-    UIButton *button1 = [[UIButton alloc]initWithFrame:CGRectMake(180, 40, 60, 40)];
+    UIButton *button1 = [[UIButton alloc]initWithFrame:CGRectMake(180, 40, 160, 40)];
     [button1 setTitle:@"切换摄像头" forState:UIControlStateNormal];
     [self.view addSubview:button1];
     [button1 addTarget:self action:@selector(changeAction) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *button2 = [[UIButton alloc]initWithFrame:CGRectMake(60, 100, 160, 40)];
+    [button2 setTitle:@"获取照片" forState:UIControlStateNormal];
+    [self.view addSubview:button2];
+    [button2 addTarget:self action:@selector(getphotoAction) forControlEvents:UIControlEventTouchUpInside];
 }
-
+-(void) getphotoAction{
+    [self.cameraController getPhoto];
+}
 -(void)changeAction {
     [self.cameraController changeCamera];
 }

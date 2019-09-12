@@ -18,6 +18,9 @@
 @property (strong, nonatomic) AVCaptureDevice *activeCamera;// 当前正在使用的摄像头的输入
 @property (strong, nonatomic) dispatch_queue_t videoQueue; //视频队列
 @property (strong, nonatomic) AVCaptureMovieFileOutput *movieOutput;
+@property (strong, nonatomic) AVCapturePhotoOutput *imageOutput;
+@property (strong, nonatomic) AVCaptureStillImageOutput *stillImageOutput;
+
 @end
 
 @implementation CameraController
@@ -51,18 +54,59 @@
         }
     }
     
-    // 5、输出
+    // 5、视频输出
     self.movieOutput = [[AVCaptureMovieFileOutput alloc]init];
-    
     if([self.captureSession canAddOutput:self.movieOutput]) {
         [self.captureSession addOutput:self.movieOutput];
     }
     
+    //6、静态图片输出
+    if (@available(iOS 10.0, *)) {
+        self.imageOutput = [[AVCapturePhotoOutput alloc]init];
+        //输出连接 判断是否可用，可用则添加到输出连接中去
+        if ([self.captureSession canAddOutput:self.imageOutput])
+        {
+            [self.captureSession addOutput:self.imageOutput];
+        }
+    }else {
+        //AVCaptureStillImageOutput 实例 从摄像头捕捉静态图片
+        self.stillImageOutput = [[AVCaptureStillImageOutput alloc]init];
+        //配置字典：希望捕捉到JPEG格式的图片
+        self.stillImageOutput.outputSettings = @{AVVideoCodecKey:AVVideoCodecTypeJPEG};
+        if ([self.captureSession canAddOutput:self.stillImageOutput])
+        {
+            [self.captureSession addOutput:self.stillImageOutput];
+        }
+    }
+
     self.videoQueue = dispatch_queue_create("cc.VideoQueue", NULL);
     //使用同步调用会损耗一定的时间，则用异步的方式处理
     dispatch_async(self.videoQueue, ^{
         [self.captureSession startRunning];
     });
+}
+
+// 从流中获取照片
+-(void)getPhoto {
+    // 拍照
+    if (@available(iOS 10.0, *)) {
+        AVCapturePhotoOutput * output = (AVCapturePhotoOutput *)self.imageOutput;
+        AVCapturePhotoSettings * settings = [AVCapturePhotoSettings photoSettings];
+        [output capturePhotoWithSettings:settings delegate:self];
+    }else{
+        AVCaptureStillImageOutput * stillImageOutput = (AVCaptureStillImageOutput *)self.stillImageOutput;
+        //从 AVCaptureStillImageOutput 中取得 AVCaptureConnection
+        AVCaptureConnection *connection = [stillImageOutput connectionWithMediaType:AVMediaTypeVideo];
+        [stillImageOutput captureStillImageAsynchronouslyFromConnection:connection completionHandler:^(CMSampleBufferRef  _Nullable imageDataSampleBuffer, NSError * _Nullable error) {
+            if (imageDataSampleBuffer != nil) {
+                NSData * data = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
+                UIImage *image = [[UIImage alloc]initWithData:data];
+                //重点：捕捉图片成功后，将图片传递出去
+                UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+            }
+        }];
+    }
+    
 }
 
 -(void)startRecording {
@@ -163,6 +207,7 @@
     }
 }
 
+
 //写入视频唯一文件系统URL
 - (NSURL *)uniqueURL {
     NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -189,6 +234,36 @@ didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL
 #pragma mark - 视频输出代理
 -(void)captureOutput:(AVCaptureFileOutput *)captureOutput didStartRecordingToOutputFileAtURL:(NSURL *)fileURL fromConnections:(NSArray *)connections{
     NSLog(@"开始录制...");
+}
+
+#pragma mark AVCapturePhotoCaptureDelegate
+- (void)captureOutput:(AVCapturePhotoOutput *)output didFinishProcessingPhoto:(AVCapturePhoto *)photo error:(NSError *)error {
+    if (error) {
+        NSLog(@"获取图片错误 --- %@",error.localizedDescription);
+    }
+    if (photo) {
+        if (@available(iOS 11.0, *)) {
+            
+            CGImageRef cgImage = [photo CGImageRepresentation];
+            UIImage * image = [UIImage imageWithCGImage:cgImage];
+            NSLog(@"获取图片成功 --- %@",image);
+            
+            //前置摄像头拍照会旋转180解决办法
+            if (self.activeVideoInput.device.position == AVCaptureDevicePositionFront) {
+                UIImageOrientation imgOrientation = UIImageOrientationLeftMirrored;
+                image = [[UIImage alloc]initWithCGImage:cgImage scale:1.0f orientation:imgOrientation];
+            }else {
+                UIImageOrientation imgOrientation = UIImageOrientationRight;
+                image = [[UIImage alloc]initWithCGImage:cgImage scale:1.0f orientation:imgOrientation];
+            }
+            //重新画一张图片(将时间/个人信息/地址信息画上去)
+//            self.image = [self drawMarkImage:image];
+            
+            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+        } else {
+            NSLog(@"不是走这个代理方法");
+        }
+    }
 }
 
 @end

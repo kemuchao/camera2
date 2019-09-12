@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
  * 其实这就是一个统一管理相机属性的类
  * 包括:输入，输出，session会话
  */
-@interface CameraController : NSObject <AVCaptureFileOutputRecordingDelegate>
+@interface CameraController : NSObject <AVCaptureFileOutputRecordingDelegate,AVCapturePhotoCaptureDelegate>
 
 @property (strong, nonatomic) AVCaptureSession *captureSession;// 捕捉会话
 
@@ -33,7 +33,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 //聚焦
 - (void)tappedToFocusAtPoint:(CGPoint)point;
-
+//聚焦
+- (void)getPhoto;
 @end
 
 NS_ASSUME_NONNULL_END
