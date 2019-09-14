@@ -35,6 +35,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)tappedToFocusAtPoint:(CGPoint)point;
 //聚焦
 - (void)getPhoto;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -13,6 +13,7 @@
 @interface ViewController ()<THPreviewViewDelegate>
 @property (strong, nonatomic) PreviewView *previewView;
 @property (strong, nonatomic) CameraController *cameraController;
+@property(strong,nonatomic)UIImageView *imageView;
 @end
 
 @implementation ViewController
@@ -40,7 +41,23 @@
     [button2 setTitle:@"获取照片" forState:UIControlStateNormal];
     [self.view addSubview:button2];
     [button2 addTarget:self action:@selector(getphotoAction) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(30, self.view.frame.size.height - 150, 100, 100)];
+    self.imageView = imageView;
+    [self.view addSubview:imageView];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(updateThumbnail:)
+                                                 name:@"showVideoImage"
+                                               object:nil];
+    
 }
+
+- (void)updateThumbnail:(NSNotification *)notification {
+    UIImage *image = notification.object;
+    self.imageView.image = image;
+}
+
+
 -(void) getphotoAction{
     [self.cameraController getPhoto];
 }

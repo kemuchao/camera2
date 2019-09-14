@@ -111,10 +111,14 @@
     if (@available(iOS 10.0, *)) {
         AVCapturePhotoOutput * output = (AVCapturePhotoOutput *)self.imageOutput;
         AVCapturePhotoSettings * settings = [AVCapturePhotoSettings photoSettings];
+        
+        // 执行这句代码，就会执行获取图片的代理方法 AVCapturePhotoCaptureDelegate
         [output capturePhotoWithSettings:settings delegate:self];
     }else{
         AVCaptureStillImageOutput * stillImageOutput = (AVCaptureStillImageOutput *)self.stillImageOutput;
         //从 AVCaptureStillImageOutput 中取得 AVCaptureConnection
+        
+        // 根指定的输出端创建链接，从而获取输出端的内容
         AVCaptureConnection *connection = [stillImageOutput connectionWithMediaType:AVMediaTypeVideo];
         [stillImageOutput captureStillImageAsynchronouslyFromConnection:connection completionHandler:^(CMSampleBufferRef  _Nullable imageDataSampleBuffer, NSError * _Nullable error) {
             if (imageDataSampleBuffer != nil) {
@@ -132,8 +136,12 @@
     self.outputURL = [self uniqueURL];
     NSLog(@"outputURL=%@",self.outputURL);
     //在捕捉输出上调用方法 参数1:录制保存路径  参数2:代理
-    [self.movieOutput startRecordingToOutputFileURL: self.outputURL  recordingDelegate:self];
+    if(![self.movieOutput isRecording])
+    {
+         [self.movieOutput startRecordingToOutputFileURL: self.outputURL  recordingDelegate:self];
+    }
 }
+
 
 -(void)stopRecording {
      [self.movieOutput stopRecording];
@@ -241,19 +249,56 @@
     return nil;
 }
 
-#pragma AVCaptureFileOutputRecordingDelegate
+#pragma AVCaptureFileOutputRecordingDelegate - 视频输出代理
+
+//开始录制
+-(void)captureOutput:(AVCaptureFileOutput *)captureOutput didStartRecordingToOutputFileAtURL:(NSURL *)fileURL fromConnections:(NSArray *)connections{
+    NSLog(@"开始录制...");
+}
+
+//录制完成
 - (void)captureOutput:(AVCaptureFileOutput *)captureOutput
 didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL
       fromConnections:(NSArray *)connections
                 error:(NSError *)error {
      NSLog(@"录制完成");
     UISaveVideoAtPathToSavedPhotosAlbum([outputFileURL path], nil, nil, nil);
+    
+    //在videoQueue 上，
+    dispatch_async(self.videoQueue, ^{
+        
+        //建立新的AVAsset & AVAssetImageGenerator
+        AVAsset *asset = [AVAsset assetWithURL:outputFileURL];
+        
+        AVAssetImageGenerator *imageGenerator = [AVAssetImageGenerator assetImageGeneratorWithAsset:asset];
+        
+        //设置maximumSize 宽为100，高为0 根据视频的宽高比来计算图片的高度
+        imageGenerator.maximumSize = CGSizeMake(100.0f, 0.0f);
+        
+        //捕捉视频缩略图会考虑视频的变化（如视频的方向变化），如果不设置，缩略图的方向可能出错
+        imageGenerator.appliesPreferredTrackTransform = YES;
+        
+        //获取CGImageRef图片 注意需要自己管理它的创建和释放
+        CGImageRef imageRef = [imageGenerator copyCGImageAtTime:kCMTimeZero actualTime:NULL error:nil];
+        
+        //将图片转化为UIImage
+        UIImage *image = [UIImage imageWithCGImage:imageRef];
+        
+        //释放CGImageRef imageRef 防止内存泄漏
+        CGImageRelease(imageRef);
+        
+        //回到主线程
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            //发送请求
+            NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+            [nc postNotificationName:@"showVideoImage" object:image];
+            
+        });
+        
+    });
 }
 
-#pragma mark - 视频输出代理
--(void)captureOutput:(AVCaptureFileOutput *)captureOutput didStartRecordingToOutputFileAtURL:(NSURL *)fileURL fromConnections:(NSArray *)connections{
-    NSLog(@"开始录制...");
-}
 
 #pragma mark AVCapturePhotoCaptureDelegate
 - (void)captureOutput:(AVCapturePhotoOutput *)output didFinishProcessingPhoto:(AVCapturePhoto *)photo error:(NSError *)error {
@@ -264,6 +309,7 @@ didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL
         if (@available(iOS 11.0, *)) {
             
             CGImageRef cgImage = [photo CGImageRepresentation];
+           
             UIImage * image = [UIImage imageWithCGImage:cgImage];
             NSLog(@"获取图片成功 --- %@",image);
             
@@ -275,7 +321,10 @@ didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL
                 UIImageOrientation imgOrientation = UIImageOrientationRight;
                 image = [[UIImage alloc]initWithCGImage:cgImage scale:1.0f orientation:imgOrientation];
             }
-
+            //发送请求显示缩略图
+            NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+            [nc postNotificationName:@"showVideoImage" object:image];
+            
             UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
         } else {
             NSLog(@"不是走这个代理方法");
